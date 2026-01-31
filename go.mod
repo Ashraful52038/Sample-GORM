@@ -1,4 +1,4 @@
-module sample-gorm
+module github.com/ashraful/go-backend
 
 go 1.25.5
 

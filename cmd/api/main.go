@@ -3,7 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"sample-gorm/models"
+
+	"github.com/ashraful/go-backend/internal/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
