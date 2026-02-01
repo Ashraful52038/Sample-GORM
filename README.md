@@ -1,9 +1,9 @@
-Go Backend Project
-Part-1:PostgreSQL and GORM
+Go Backend Project Documentation
+📋 Table of Contents
+Part 1: PostgreSQL and GORM
 📋 Overview
 
 A Go backend application demonstrating database operations with PostgreSQL using GORM ORM. Features include database connection management, CRUD operations, request/response handling, and structured API responses.
-
 🚀 Quick Start
 Prerequisites
 
@@ -309,10 +309,7 @@ This project is licensed under the MIT License.
 
     Go developers community
 
-Note: This is a demonstration project. For production use, add proper error handling, logging, security measures, and environment-based configuration.
-
-
-Part-2: Echo v4 Go Backend Application
+Part 2: Echo v4 Go Backend Application
 📋 Project Overview
 
 A comprehensive Go backend application built with Echo v4 framework featuring RESTful API endpoints, middleware layers, request/response handling, and validation. This application demonstrates modern Go web development patterns with structured project organization.
@@ -322,7 +319,7 @@ text
 echo-v4-app/
 ├── main.go                    # Application entry point
 ├── handlers/                  # Request handlers
-│   └── user.go               # User-related handlers
+│   ├── user.go               # User-related handlers
 │   └── health.go             # Health check handler
 ├── middleware/               # Custom middleware
 │   ├── builtin/             # Echo built-in middleware configurations
