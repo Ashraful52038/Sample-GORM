@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"EchoV4/models/request"
-	"EchoV4/models/response"
+	"echo-v4-app/models/request"
+	"echo-v4-app/models/response"
 	"net/http"
 	"strconv"
 	"time"

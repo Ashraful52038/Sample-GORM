@@ -3,12 +3,11 @@ package main
 import (
 	"net/http"
 
-	"EchoV4/handlers"
-	"EchoV4/middleware"
+	"echo-v4-app/handlers"
+	builtin "echo-v4-app/middleware/builtin"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/labstack/echo/v4"
-	echoMw "github.com/labstack/echo/v4/middleware" // Alias to avoid conflict
 )
 
 // Custom Validator
@@ -30,9 +29,15 @@ func main() {
 	// Initialize validator
 	e.Validator = &CustomValidator{validator: validator.New()}
 
-	e.Use(middleware.Cors)
-	e.Use(middleware.LoggingMiddleware)
-	e.Use(echoMw.Recover())
+	// e.Use(middleware.Cors)
+	// e.Use(middleware.LoggingMiddleware)
+	// e.Use(echoMw.Recover())
+
+	// Setup all middlewares
+	builtin.Setup(e)
+
+	// Routes
+	setupRoutes(e)
 
 	e.GET("/", func(c echo.Context) error {
 		return c.String(http.StatusOK, "Hello, Echo V4!")
@@ -48,4 +53,21 @@ func main() {
 	if err := e.Start(":8080"); err != nil {
 		e.Logger.Fatal(err)
 	}
+}
+
+func setupRoutes(e *echo.Echo) {
+	// Health check
+	e.GET("/health", handlers.HealthCheck)
+
+	// API v1 routes
+	api := e.Group("/api/v1")
+
+	// Public routes
+	api.POST("/users", handlers.CreateUser)
+
+	// Protected routes
+	protected := api.Group("")
+	// protected.Use(middleware.JWTMiddleware())
+	protected.PUT("/users/:id", handlers.UpdateUser)
+	protected.DELETE("/users/:id", handlers.DeleteUser)
 }
